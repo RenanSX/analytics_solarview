@@ -118,8 +118,62 @@ $('#selecionar').click(function(e){
 			type: "POST",
 			url:base_url + "busca_informacoes",
 			data: data,
-			success: function (response) {
+			success: function (result) {
+				
+				$.each(result, function(i, item){
+					var arrayOfNumbers = result[i].map(Number);
+					console.log(arrayOfNumbers);
+					
+				});
 
+
+				Highcharts.chart('container', {
+
+				    title: {
+				        text: 'Gráfico Infoinversor'
+				    },
+
+				    yAxis: {
+				        title: {
+				            text: 'Parâmetros'
+				        }
+				    },
+				    legend: {
+				        layout: 'vertical',
+				        align: 'right',
+				        verticalAlign: 'middle'
+				    },
+
+				    plotOptions: {
+				        series: {
+				            label: {
+				                connectorAllowed: false
+				            },
+				            pointStart: 2010
+				        }
+				    },
+
+				    series: [{
+				        name: 'Installation',
+				        data: arrayOfNumbers
+				    }],
+
+				    responsive: {
+				        rules: [{
+				            condition: {
+				                maxWidth: 500
+				            },
+				            chartOptions: {
+				                legend: {
+				                    layout: 'horizontal',
+				                    align: 'center',
+				                    verticalAlign: 'bottom'
+				                }
+				            }
+				        }]
+				    }
+
+				});
 			}
 		});
 	}

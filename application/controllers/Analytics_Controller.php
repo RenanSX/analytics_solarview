@@ -37,16 +37,16 @@ class Analytics_Controller extends CI_Controller {
 			unset($parametros['data2']);
 		}
 
-		$strParametros = "";
+		/*$strParametros = "";
 
 		foreach ($parametros as $parametro) {
 			$strParametros .= $parametro.",";
-		}
+		}*/
 
 		$data1 = dataPadraoBanco($arrayDatas['data1']);
 		$data2 = dataPadraoBanco($arrayDatas['data2']);
 
-		$result = $this->am->buscaInformacoes($strParametros, $data1, $data2);
+		$result = $this->am->buscaInformacoes($parametros, $data1, $data2);
 
 		$this->output
         ->set_content_type('application/json')

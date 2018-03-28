@@ -14,11 +14,27 @@ class Analytics_Model extends CI_Model{
 	}
 
 	public function buscaInformacoes($parametros, $data1, $data2){
-		$this->db->select($parametros);
-		$this->db->from('infoinversor');
-		$this->db->where('atualizadoEm >=', $data1);
-		$this->db->where('atualizadoEm <=', $data2);
-		return $this->db->get()->result_array();
+		$arrayResult = array();
+		$teste = [];
+		foreach ($parametros as $parametro) {
+
+			$this->db->select($parametro);
+			$this->db->from('infoinversor');
+			$this->db->where('atualizadoEm >=', $data1);
+			$this->db->where('atualizadoEm <=', $data2);
+
+			$resultado = $this->db->get()->result_array();
+
+
+			foreach ($resultado as $r) {
+
+					$teste[$parametro][] = $r[$parametro];
+			}
+			
+			$arrayResult[$parametro] = $teste[$parametro];
+		}
+		
+		return $arrayResult;
 	}
 }
 
