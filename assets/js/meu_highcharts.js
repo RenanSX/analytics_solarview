@@ -2,16 +2,12 @@
 Highcharts.chart('container', {
 
     title: {
-        text: 'Solar Employment Growth by Sector, 2010-2016'
-    },
-
-    subtitle: {
-        text: 'Source: thesolarfoundation.com'
+        text: 'Gráfico Infoinversor'
     },
 
     yAxis: {
         title: {
-            text: 'Number of Employees'
+            text: 'Parâmetros'
         }
     },
     legend: {
