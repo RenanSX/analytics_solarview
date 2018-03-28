@@ -47,6 +47,8 @@ class Analytics_Controller extends CI_Controller {
 		$data2 = dataPadraoBanco($arrayDatas['data2']);
 
 		$result = $this->am->buscaInformacoes($parametros, $data1, $data2);
+		var_dump($result);
+		exit();
 
 		$this->output
         ->set_content_type('application/json')

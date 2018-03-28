@@ -28,6 +28,7 @@ class Analytics_Model extends CI_Model{
 
 			foreach ($resultado as $r) {
 
+					$teste[$parametro][0] = $parametro;
 					$teste[$parametro][] = $r[$parametro];
 			}
 			
