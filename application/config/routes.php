@@ -52,3 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Analytics_Controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['inicio']['GET'] = 'Analytics_Controller/index';
+$route['parametros']['GET'] = 'Analytics_Controller/buscaParametros';
+$route['busca_informacoes']['POST'] = 'Analytics_Controller/buscaInformacoes';
