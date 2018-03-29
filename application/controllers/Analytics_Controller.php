@@ -47,12 +47,23 @@ class Analytics_Controller extends CI_Controller {
 		$data2 = dataPadraoBanco($arrayDatas['data2']);
 
 		$result = $this->am->buscaInformacoes($parametros, $data1, $data2);
-		var_dump($result);
-		exit();
+
+		$arrayResult = array();
+
+		foreach ($result as $key => $value) {
+			$object = new stdClass();
+
+			$newvalue = str_replace("'", "", $value);
+			
+			$arrayResult[$key]['name'] = $object->name = $key;
+
+			
+			$arrayResult[$key]['data'] = $object->data = $newvalue;
+		}		
 
 		$this->output
         ->set_content_type('application/json')
-        ->set_output(json_encode($result));
+        ->set_output(json_encode($arrayResult));
 	}
 
 	public function buscaParametros(){
