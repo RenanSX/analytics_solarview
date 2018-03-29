@@ -15,7 +15,8 @@ class Analytics_Model extends CI_Model{
 
 	public function buscaInformacoes($parametros, $data1, $data2){
 		$arrayResult = array();
-		$teste = [];
+		$novoarray = [];
+		//recebe a quantidade de parametros, faz um select pela quantidade de parametros que existem
 		foreach ($parametros as $parametro) {
 
 			$this->db->select($parametro);
@@ -25,13 +26,12 @@ class Analytics_Model extends CI_Model{
 
 			$resultado = $this->db->get()->result_array();
 
-
+			//cria um novo array pra deixar apenas os valores
 			foreach ($resultado as $r) {
-
-				$teste[$parametro][] = $r[$parametro];
+				$novoarray[$parametro][] = $r[$parametro];
 			}
 			
-			$arrayResult[$parametro] = $teste[$parametro];
+			$arrayResult[$parametro] = $novoarray[$parametro];
 		}
 		
 		return $arrayResult;

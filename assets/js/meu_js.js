@@ -107,10 +107,7 @@ jQuery.validator.addMethod("valueNotEquals", function(value, element, param) {
 function replace(data){
 	var myJSON = JSON.stringify(data);
 	var SemQuotes =  myJSON.replace(/"/g, ""); 
-
-	console.log(myJSON);
-	console.log(SemQuotes);
-	console.log(JSON.parse(SemQuotes));
+	
 	return JSON.parse(SemQuotes);
 }
 
@@ -143,10 +140,9 @@ $('#selecionar').click(function(e){
 				    },
 				    xAxis: {
 				        type: 'datetime',
-				        dateTimeLabelFormats: { // don't display the dummy year
-				            month: '%e. %b',
-				            year: '%b'
-				        },
+				        labels: {
+							format: '{value:%Y-%b-%e}'
+						},
 				        title: {
 				            text: 'Data'
 				        }
